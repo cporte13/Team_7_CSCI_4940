@@ -1,0 +1,21 @@
+body {
+    margin: 40px auto;
+    line-height: 1.6;
+    font-size: 18px;
+    color: #444;
+    text-align: center;
+}
+
+h1, h2, h3 {
+    line-height: 1.2;
+}
+
+.content {
+    padding: 40px;
+    display: inline-block;
+    line-height: 1.2;
+}
+
+.introduction {
+    line-height: 1.5;
+}
