@@ -1,15 +1,5 @@
 <?php
     include('include/header.php');
-    /*
-    The code below currently does not work. 2/24/24
-    include ('include/connectdb.php');
-
-    $pdo = pdo_connect_mysql();
-
-    $stmt = $pdo->prepare('SELECT * FROM tickets ORDER BY created DESC');
-    $stmt->execute();
-    $tickets = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    */
 ?>
 
 <!DOCTYPE html>

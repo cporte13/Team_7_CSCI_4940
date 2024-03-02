@@ -1,10 +1,3 @@
-<?php
-    if(isset($_POST['submit'])) {
-        echo $_POST['username'];
-        echo $_POST['password'];
-    }
-?>
-
 <!DOCTYPE html>
 <html>
     <?php include('include/header.php'); ?>
@@ -20,7 +13,7 @@
     <body>
         <h1>Login</h1>
         <div class="login">
-            <form action="login.php" method="post" class="input">
+            <form action="authenticate.php" method="post">
                 <div>
                 <i class="fas fa-user icon"></i>
                 <input type="text" class="input-field" name="username" placeholder="Username" id="username" required>
