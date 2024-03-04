@@ -1,0 +1,237 @@
+* {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+body {
+    background-color: #FFFFFF;
+    margin: 0;
+}
+
+.navtop {
+    background-color: rgba(0, 0, 0, 0.90);
+    height: 60px;
+    width: 100%;
+    border: 0;
+}
+
+.navtop div {
+    display: flex;
+    margin: 0 auto;
+    width: 1000px;
+    height: 100%;
+}
+
+.nvatop div h1, .navtop div a {
+    display: inline-flex;
+    align-items: center;
+}
+
+.navtop div h1 {
+    flex: 1;
+    font-size: 24px;
+    padding: 0;
+    margin: 0;
+    color: whitesmoke;
+    font-weight: normal;
+}
+
+.navtop div a {
+    padding: 0 20px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.navtop div a i {
+    padding: 2px 8px 0 0;
+}
+
+.content {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.content h2 {
+    margin: 0;
+    padding: 25px 0;
+    font-size: 22px;
+    border-bottom: 1px solid;
+    color: #666666;
+}
+
+.buttons {
+    display: block;
+    background-color: #30b673;
+    border: 0;
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    width: 200px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+.buttons .btn-red {
+    background-color: red;
+}
+
+.buttons .btn-green {
+    background-color: #30b673;
+}
+
+.buttons .btn-grey {
+    background-color: grey;
+}
+
+.btns btn {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #38b673;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    padding: 10px 15px;
+    margin: 15px 10px 15px 0;
+}
+
+.create_btn {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #38b673;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    padding: 10px 15px;
+    margin: 15px 10px 15px 0;
+}
+.home .tickets-list {
+    display: flex;
+    flex-flow: column;
+}
+
+.home .tickets-list .ticket {
+    padding: 15px 0;
+    width: 100%;
+    border-bottom: solid 1px;
+    display: flex;
+    text-decoration: none;
+}
+
+.home .tickets-list .ticket .con {
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+}
+
+.home .tickets-list .ticket i {
+    text-align: center;
+    width: 80px;
+    color: #b3b3b3;
+}
+
+.home .tickets-list .ticket .title {
+    font-weight: 600;
+    color: white;
+}
+
+.home .tickets-list .ticket .created {
+    flex-grow: 1;
+    align-items: flex-end;
+    color: grey;
+    font-size: 14px;
+}
+
+.home .tickets-list .ticket:last-child {
+    border-bottom: 0;
+}
+
+.home .tickets-list .ticket:hover {
+    background-color: #fcfcfc;
+}
+
+.view h2 .open, .view h2.resolved {
+    color: #30b673;
+}
+
+.view h2 .on hold {
+    color: grey;
+}
+
+.view .ticket {
+    padding: 20px 0;
+}
+
+.aview .ticket .created {
+    color: grey;
+}
+
+.view .comments {
+    margin-top: 15px;
+    border-top: 1px solid;
+}
+
+.view .comments .comment {
+    display: flex;
+    padding-bottom: 5px;
+}
+
+.view .comments .comment div {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 65px;
+    color: #e6e6e6;
+    transform: scaleX(-1);
+}
+
+.view .comments .comment p {
+    margin: o o 20px 0;
+}
+
+.view .comments .comment p span {
+    display: flex;
+    font-size: 14px;
+    padding-bottom: 5px;
+    color: grey;
+}
+
+.create form, .view form {
+    padding: 15px 0;
+    display: flex;
+    flex-flow: column;
+    width: 400px;
+}
+
+.create form label, .view form label {
+    display: inline-flex;
+    width: 100%;
+    padding: 10px 0;
+    margin-right: 25px;
+}
+
+.create form input, .create form textarea, .view form input, .view form textarea {
+    padding: 10px;
+    width: 100%;
+    margin-right: 25px;
+    margin-bottom: 15px;
+    border: 1px solid;
+}
+
+.create form textarea, .view form textarea {
+    height: 200px;
+}
+
+.create form input[type="submit"], .view form input[type="submit"] {
+    display: block;
+    background-color: #30b673;
+    border: 0;
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    width: 200px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
