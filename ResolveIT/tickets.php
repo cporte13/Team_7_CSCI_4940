@@ -6,11 +6,6 @@ if (!isset ($_SESSION["loggedin"])) {
     header('Location: login.php');
     exit;
 }
-
-$pdo = pdo_connect_mysql();
-$stmt = $pdo->prepare('SELECT * FROM tickets ORDER BY created DESC');
-$stmt->execute();
-$tickets = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <?=template_header('Tickets')?>
@@ -19,29 +14,33 @@ $tickets = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <a href="createticket.php" class="create_btn">Create Ticket</a>
 
         <div class="tickets-list">
-            <table>
+            <table class="tickets_table">
                 <tr>
-                    <td>ID</td>
-                    <td>Username</td>
-                    <td>Title</td>
-                    <td>Message</td>
-                    <td>Date</td>
-                    <td>Status</td>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Title</th>
+                    <th>Message</th>
+                    <th>Date</th>
+                    <th>Status</th>
                 </tr>
-                <?php foreach ($tickets as $ticket): ?>
-                <a href="viewtickets.php?id=<?=$ticket['id']?>" class="ticket">
-                <tr>
-                    <td><?=htmlspecialchars($ticket['id'], ENT_QUOTES)?></td>
-                    <td><?=htmlspecialchars($ticket['username'], ENT_QUOTES)?></td>
-                    <td><?=htmlspecialchars($ticket['title'], ENT_QUOTES)?></td>
-                    <td><?=htmlspecialchars($ticket['msg'], ENT_QUOTES)?></td>
-                    <td><?=date('F dS, G:ia', strtotime($ticket['created']))?></td>
-                    <td><?=htmlspecialchars($ticket['status'], ENT_QUOTES)?></td>
-                </tr>
-                </php endforeach; ?>
+                <?php
+                $pdo = pdo_connect_mysql();
+                $stmt = $pdo->prepare('SELECT * FROM tickets ORDER BY created DESC');
+                $stmt->execute();
+                $pdo = pdo_connect_mysql();
+                $tickets = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($tickets as $row) {
+                    echo '<tr>';
+                    echo '<td>' . $row['id'] .'</td>';
+                    echo '<td>' . $row['username'] .'</td>';
+                    echo '<td>' . $row['title'] .'</td>';
+                    echo '<td>' . $row['msg'] .'</td>';
+                    echo '<td>' . $row['created'] .'</td>';
+                    echo '<td>' . $row['status'] .'</td>';
+                    echo '</tr>';
+                }
+                ?>
             </table>
-            </a>
-            <?php endforeach; ?>
         </div>
     </div>
 

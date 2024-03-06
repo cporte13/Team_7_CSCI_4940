@@ -36,7 +36,7 @@ if ($stmt = $con->prepare('SELECT id, password FROM users WHERE username = ?')) 
         $_SESSION['loggedin'] = true;
         $_SESSION['name'] = $username;
         $_SESSION['id'] = $id;
-        //echo "Sucessfully logged in!";
+        //echo "Successfully logged in!";
         header('Location: tickets.php');
     } else {
         echo 'Incorrect username or password';
