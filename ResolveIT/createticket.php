@@ -10,8 +10,11 @@ if(isset($_POST['submit'])) {
     $username = $_POST['username'];
     $msg = $_POST['msg'];
 
-    $sql = 'INSERT INTO tickets (title, username, msg) VALUES (:title, :username, :msg)';
-    $stmt = $pdo->prepare($sql);
+    //Prepares data and binds params to prevent SQL injection
+    $stmt = $pdo->prepare('INSERT INTO tickets (title, username, msg) VALUES (:title, :username, :msg)');
+    $stmt-> bindParam(':title', $title);
+    $stmt-> bindParam(':username', $username);
+    $stmt->bindParam(':msg', $msg);
 
     $data = [
         ':title'=> $title,

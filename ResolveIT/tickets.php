@@ -27,14 +27,14 @@ if (!isset ($_SESSION["loggedin"])) {
                 $pdo = pdo_connect_mysql();
                 $stmt = $pdo->prepare('SELECT * FROM tickets ORDER BY created DESC');
                 $stmt->execute();
-                $pdo = pdo_connect_mysql();
                 $tickets = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                
                 foreach ($tickets as $row) {
                     echo '<tr>';
                     echo '<td>' . $row['id'] .'</td>';
                     echo '<td>' . $row['username'] .'</td>';
                     echo '<td>' . $row['title'] .'</td>';
-                    echo '<td>' . $row['msg'] .'</td>';
+                    echo '<td><a href=\"viewtickets.php?id=<?=$row[$id]"?>' . $row['msg'] . '"\"></a></td>';
                     echo '<td>' . $row['created'] .'</td>';
                     echo '<td>' . $row['status'] .'</td>';
                     echo '</tr>';
