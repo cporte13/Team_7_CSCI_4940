@@ -29,14 +29,14 @@ if (!isset ($_SESSION["loggedin"])) {
                 $stmt->execute();
                 $tickets = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 
-                foreach ($tickets as $row) {
+                foreach ($tickets as $ticket) {
                     echo '<tr>';
-                    echo '<td>' . $row['id'] .'</td>';
-                    echo '<td>' . $row['username'] .'</td>';
-                    echo '<td>' . $row['title'] .'</td>';
-                    echo '<td><a href=\"viewtickets.php?id=<?=$row[$id]"?>' . $row['msg'] . '"\"></a></td>';
-                    echo '<td>' . $row['created'] .'</td>';
-                    echo '<td>' . $row['status'] .'</td>';
+                    echo '<td>' . $ticket['id'] . '</td>';
+                    echo '<td>' . $ticket['username'] . '</td>';
+                    echo '<td>' . $ticket['title'] . '</td>';
+                    echo '<td><a href="viewtickets.php?id='.$ticket['id'].'">' . $ticket['msg'] . '</a>' . '</td>';
+                    echo '<td>' . $ticket['created'] . '</td>';
+                    echo '<td>' . $ticket['status'] . '</td>';
                     echo '</tr>';
                 }
                 ?>
