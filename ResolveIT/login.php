@@ -13,7 +13,7 @@
     <body>
         <h1>Login</h1>
         <div class="login">
-            <form action="authenticate.php" method="post">
+            <form action="authenticate_pdo.php" method="post">
                 <div>
                 <i class="fas fa-user icon"></i>
                 <input type="text" class="input-field" name="username" placeholder="Username" id="username" required>
@@ -22,7 +22,7 @@
                 <i class="fas fa-lock icon"></i>
                 <input type="text" class="input-field" name="password" style="-webkit-text-security: circle"  placeholder="Password" id="password" required>
                 </div>
-                <input type="submit" value="Login" id="submit">
+                <input type="submit" value="login" id="submit">
             </form>
         </div>
         <?php

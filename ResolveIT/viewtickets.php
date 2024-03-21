@@ -1,8 +1,6 @@
 <?php
 include 'functions.php';
-
-//SQL Connection
-$pdo = pdo_connect_mysql();
+session_start();
 
 //Checks for ID param in URL
 if (!isset($_GET['id'])) {
