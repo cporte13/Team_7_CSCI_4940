@@ -19,8 +19,7 @@ if (!isset ($_SESSION["loggedin"])) {
             <table class="tickets_table">
                 <tr>
                     <th>ID</th>
-                    <th><?php echo $_SESSION['username'] ?></th>
-                    <th>Role</th>
+                    <th>User</th>
                     <th>Title</th>
                     <th>Message</th>
                     <th>Date</th>
@@ -31,15 +30,22 @@ if (!isset ($_SESSION["loggedin"])) {
                 $query->execute();
                 $role = $query->fetch();
 
-                $stmt = $pdo->prepare("SELECT * FROM tickets WHERE username = '{$_SESSION['username']}' ORDER BY created DESC");
-                $stmt->execute();
+                if ($role['role'] == "admin") {
+                    $stmt = $pdo->prepare("SELECT * FROM tickets ORDER BY created DESC");
+                    $stmt->execute();
+                } else if ($role['role'] == "user") {
+                    $stmt = $pdo->prepare("SELECT * FROM tickets WHERE username = '{$_SESSION['username']}' ORDER BY created DESC");
+                    $stmt->execute();
+                } else {
+                    echo "Role not found! Aborting...";
+                }
+
                 $tickets = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 foreach ($tickets as $ticket) {
                     echo '<tr>';
                     echo '<td>' . $ticket['id'] . '</td>';
                     echo '<td>' . $ticket['username'] . '</td>';
-                    echo '<td>' . $role['role'] . '</td>';
                     echo '<td>' . $ticket['title'] . '</td>';
                     echo '<td><a href="viewtickets.php?id='.$ticket['id'].'">' . $ticket['msg'] . '</a>' . '</td>';
                     echo '<td>' . $ticket['created'] . '</td>';

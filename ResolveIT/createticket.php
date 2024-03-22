@@ -1,11 +1,11 @@
 <?php
-include "functions.php";
-
 session_start();
+
+include "functions.php";
 
 if(isset($_POST['submit'])) {
     $title = $_POST['title'];
-    $username = $_POST['username'];
+    $username = $_SESSION['username'];
     $msg = $_POST['msg'];
 
     //Prepares data and binds params to prevent SQL injection
@@ -41,8 +41,6 @@ if(isset($_POST['submit'])) {
     <form action="createticket.php" method="post">
         <label for="title">Title</label>
         <input type="text" name="title" placeholder="Title" id="title" required>
-        <label for="username">Username</label>
-        <input type="text" name="username" placeholder="Username" id="username" required>
         <label for="msg">Message</label>
         <textarea name="msg" placeholder="Type here..." id="msg" required></textarea>
         <input type="submit" value="Create" name="submit">

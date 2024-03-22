@@ -20,10 +20,10 @@ try {
         $user = $stmt->fetch();
 
         if ($password == $user['password']) {
-            session_regenerate_id();
             $_SESSION['loggedin'] = true;
             $_SESSION['id'] = $user['id'];
             $_SESSION['role'] = $user['role'];
+            session_regenerate_id();
             header('Location: tickets.php');
         } else {
             echo "username (SESSION): " . $_SESSION['username'] . "<br>\n";

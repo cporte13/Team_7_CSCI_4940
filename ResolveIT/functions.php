@@ -1,5 +1,4 @@
 <?php
-
 //Connects to database
     $host = 'localhost';
     $user = 'root';
@@ -32,7 +31,7 @@ function template_header($title) {
             <nav class="navtop">
                 <div>
                     <a>ResolveIT</a>
-                    <a href="tickets.php">Tickets</a>
+                    <a href="tickets.php">My Tickets</a>
                     <a href="logout.php">Logout</a>
                 </div>
             </nav>
