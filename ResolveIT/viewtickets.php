@@ -37,22 +37,22 @@ $stmt->execute([ $_GET['id'] ]);
 $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<?=template_header('Ticket')?>
+<?=template_header('Comment')?>
 <div class="content view">
-    <h2><?=htmlspecialchars($ticket['title'], ENT_QUOTES)?><class="<?=$ticket['status']?>"</span></h2>
+    <h2>Title: <?=htmlspecialchars($ticket['title'], ENT_QUOTES)?><class="<?=$ticket['status']?>"</span></h2>
     <div class="ticket">
-        <p class="user"><?=nl2br($ticket['username']) ?></p>
-        <p class="created"><?=date('F dSm G:ia', strtotime($ticket['created']))?></p>
-        <p class="msg"><?=nl2br(htmlspecialchars($ticket['msg'], ENT_QUOTES))?></p>
+        <p class="user">Created By: <?=nl2br($ticket['username']) ?></p>
+        <p class="created">Date Created: <?=date('F dSm G:ia', strtotime($ticket['created']))?></p>
+        <p class="msg">Message: <?=nl2br(htmlspecialchars($ticket['msg'], ENT_QUOTES))?></p>
     </div>
 
     <div class="comments">
         <?php foreach ($comments as $comment): ?>
             <div class="comment">
                 <p>
-                <span><?=nl2br($_SESSION['username'])?></span>
-                <span><?=date('F dS, G:ia', strtotime($comment['created']))?></span>
-                <?=nl2br(htmlspecialchars($comment['msg'], ENT_QUOTES))?>
+                <span>Commenter: <?=nl2br($_SESSION['username'])?></span>
+                <span>Comment Date: <?=date('F dS, G:ia', strtotime($comment['created']))?></span>
+                Comment: <?=nl2br(htmlspecialchars($comment['msg'], ENT_QUOTES))?>
                 </p>
             </div>
         <?php endforeach; ?>
