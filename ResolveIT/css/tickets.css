@@ -107,6 +107,55 @@ body {
     padding: 10px 15px;
     margin: 15px 10px 15px 0;
 }
+
+.status_btn_open {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 5px;
+    color: black;
+    background-color: #0f5cd1;
+    padding: 10px 15px;
+    margin: 10px 10px 10px 10px;
+}
+
+.status_btn_closed {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 5px;
+    color: black;
+    background-color: red;
+    padding: 10px 15px;
+    margin: 10px 10px 10px 10px;
+}
+
+.status_btn_onhold {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 5px;
+    color: black;
+    background-color: #f3f70c;
+    padding: 10px 15px;
+    margin: 10px 10px 10px 10px;
+}
+
+.status_btn_resolved {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 5px;
+    color: black;
+    background-color: #38b673;
+    padding: 10px 15px;
+    margin: 10px 10px 10px 10px;
+}
+
 .home .tickets-list {
     display: flex;
     flex-flow: column;
@@ -263,6 +312,10 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
+    html, body {
+        overflow-x: hidden;
+    }
+
     .content {
         margin-left: 8px;
         margin-right: 8px;
@@ -309,5 +362,4 @@ body {
     .create form input[type="submit"], .view form input[type="submit"] {
     margin-left: 25%;
     }
-    
 }

@@ -1,6 +1,8 @@
 <?php
-include 'functions.php';
 session_start();
+
+include 'functions.php';
+
 
 //Checks for ID param in URL
 if (!isset($_GET['id'])) {
@@ -10,6 +12,7 @@ if (!isset($_GET['id'])) {
 $stmt = $pdo->prepare('SELECT * FROM tickets WHERE id = ?');
 $stmt->execute([$_GET['id']]);
 $ticket = $stmt->fetch(PDO::FETCH_ASSOC);
+
 //Checks if ticket exists
 if (!$ticket) {
     exit('Invalid Ticket ID.');
@@ -20,7 +23,8 @@ if (isset($_GET['status']) && in_array($_GET['status'], array('open','closed', '
     $stmt = $pdo->prepare('UPDATE tickets SET status = ? WHERE id = ?');
     $stmt->execute([$_GET['status'], $_GET['id']]);
 
-    header('Location:viewtickets.php?id=' . $_GET['id']);
+    //header('Location: viewtickets.php?id=' . $_GET['id']);
+    header('Location: tickets.php');
     exit;
 }
 
@@ -39,12 +43,19 @@ $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <?=template_header('Comment')?>
 <div class="content view">
-    <h2>Title: <?=htmlspecialchars($ticket['title'], ENT_QUOTES)?><class="<?=$ticket['status']?>"</span></h2>
+    <h2>Title: <?=htmlspecialchars($ticket['title'], ENT_QUOTES)?> <span class="<?=$ticket['status']?>">(<?=$ticket['status']?>)</span></h2>
     <div class="ticket">
         <p class="user">Created By: <?=nl2br($ticket['username']) ?></p>
         <p class="created">Date Created: <?=date('F dSm G:ia', strtotime($ticket['created']))?></p>
         <p class="msg">Message: <?=nl2br(htmlspecialchars($ticket['msg'], ENT_QUOTES))?></p>
     </div>
+
+    <?php
+    echo '<div class="btns">';
+    echo '<a href="viewtickets.php?id=' . $_GET['id'] . '?>&status=resolved' . '"class="status_btn_resolved">' . 'Resolve' . '</a>';
+    echo '<a href="viewtickets.php?id=' . $_GET['id'] . '?>&status=closed' . '"class="status_btn_closed">' . 'Close' . '</a>';
+    echo '</div>';
+    ?>
 
     <div class="comments">
         <?php foreach ($comments as $comment): ?>

@@ -49,7 +49,17 @@ if (!isset ($_SESSION["loggedin"])) {
                     echo '<td>' . $ticket['title'] . '</td>';
                     echo '<td><a href="viewtickets.php?id='.$ticket['id'].'">' . $ticket['msg'] . '</a>' . '</td>';
                     echo '<td>' . $ticket['created'] . '</td>';
-                    echo '<td>' . $ticket['status'] . '</td>';
+
+                    if ($ticket['status'] == "open") {
+                        echo '<td class="status_btn_open">' . $ticket['status'] . '</td>';
+                    } else if ($ticket['status'] == "closed") {
+                        echo '<td class="status_btn_closed">' . $ticket['status'] . '</td>';
+                    } else if ($ticket['status'] == "on hold") {
+                        echo '<td class="status_btn_onhold">' . $ticket['status'] . '</td>';
+                    } else if ($ticket['status'] == "resolved") {
+                        echo '<td class="status_btn_resolved">' . $ticket['status'] . '</td>';
+                    }
+
                     echo '</tr>';
                 }
                 ?>
