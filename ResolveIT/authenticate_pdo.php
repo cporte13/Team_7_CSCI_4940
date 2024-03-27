@@ -1,10 +1,11 @@
 <?php
 session_start();
 
-
+//For some reason this fixes the login issues we've been having
 $username = $_POST['username'];
 $password = $_POST['password'];
-
+$_SESSION['username'] = $_POST['username'];
+$_SESSION['password'] = $_POST['password'];
 
 include 'functions.php';
 
@@ -23,15 +24,13 @@ try {
             $_SESSION['loggedin'] = true;
             $_SESSION['id'] = $user['id'];
             $_SESSION['role'] = $user['role'];
-            session_regenerate_id();
+            session_regenerate_id(true);
             header('Location: tickets.php');
         } else {
             echo "username (SESSION): " . $_SESSION['username'] . "<br>\n";
             echo "password (SESSION): " . $_SESSION['password'] . "<br>\n";
             echo "username($): " . $username . "<br>\n";
             echo "password($): " . $password . "<br>\n";
-            $_SESSION['username'] = $username;
-            $_SESSION['password'] = $password;
             echo "Incorrect password.";
         }
     } else {
@@ -39,8 +38,6 @@ try {
         echo "password: " . $_SESSION['password'] . "<br>\n";
         echo "username($): " . $username . "<br>\n";
         echo "password($): " . $password . "<br>\n";
-        $_SESSION['username'] = $username;
-        $_SESSION['password'] = $password;
         echo "Failed to retrieve database.";
     }
 } catch (PDOException $e) {

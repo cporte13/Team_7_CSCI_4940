@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
     <?php include('include/header.php'); ?>
@@ -22,7 +26,7 @@
                 <i class="fas fa-lock icon"></i>
                 <input type="text" class="input-field" name="password" style="-webkit-text-security: circle"  placeholder="Password" id="password" required>
                 </div>
-                <input type="submit" value="login" id="submit">
+                <input type="submit" value="Login" id="submit">
             </form>
         </div>
         <?php

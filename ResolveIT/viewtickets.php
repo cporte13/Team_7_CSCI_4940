@@ -51,10 +51,24 @@ $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <?php
-    echo '<div class="btns">';
-    echo '<a href="viewtickets.php?id=' . $_GET['id'] . '?>&status=resolved' . '"class="status_btn_resolved">' . 'Resolve' . '</a>';
-    echo '<a href="viewtickets.php?id=' . $_GET['id'] . '?>&status=closed' . '"class="status_btn_closed">' . 'Close' . '</a>';
-    echo '</div>';
+    $query = $pdo->prepare("SELECT role FROM users WHERE username = '{$_SESSION['username']}'");
+    $query->execute();
+    $role = $query->fetch();
+
+    if ($role['role'] == "user") {
+        echo '<div class="btns">';
+            echo '<a href="viewtickets.php?id=' . $_GET['id'] . '?>&status=resolved' . '"class="status_btn_resolved">' . 'Resolve' . '</a>';
+            echo '<a href="viewtickets.php?id=' . $_GET['id'] . '?>&status=closed' . '"class="status_btn_closed">' . 'Close' . '</a>';
+        echo '</div>';
+    } else if ($role['role'] == "admin") {
+        echo '<div class="btns">';
+            echo '<a href="viewtickets.php?id=' . $_GET['id'] . '?>&status=resolved' . '"class="status_btn_resolved">' . 'Resolve' . '</a>';
+            echo '<a href="viewtickets.php?id=' . $_GET['id'] . '?>&status=closed' . '"class="status_btn_closed">' . 'Close' . '</a>';
+            echo '<a href="viewtickets.php?id=' . $_GET['id'] . '?>&status=open' . '"class="status_btn_open">' . 'Open' . '</a>';
+            echo '<a href="viewtickets.php?id=' . $_GET['id'] . '?>&status=on hold' . '"class="status_btn_onhold">' . 'On Hold' . '</a>';
+        echo '</div>';
+    }
+
     ?>
 
     <div class="comments">
