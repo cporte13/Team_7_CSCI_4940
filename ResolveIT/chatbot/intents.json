@@ -1,0 +1,37 @@
+{"intents": [
+    {"tag": "computer slow",
+    "patterns": ["computer is slow", "my computer is slowing down", "slow to open computer"],
+    "responses": ["To fix a slow computer, try the following:\n 1) Try cleaning hard drive space with a disk cleanup tool\n + 2) Close background processes via task manager\n 3) Consider upgrading RAM"],
+    "context_set": ""
+    },
+    {"tag": "computer freeze",
+    "patterns": ["my computer is frozen", "computer freezing", "frozen computer", "screen freezes"],
+    "responses": ["To fix a computer that is freezing, try the following:\n 1) Update device drivers\n 2) Make sure the computer is not overheating\n 3) Run a malware scan on the device"],
+    "context_set": ""
+    },
+    {"tag": "computer bluescreen",
+    "patterns": ["my computer blue screens", "blue screen", "blue screen of death", "blue screen of death on computer"],
+    "responses": ["To potentially resolve a blue screen, try the following:\n 1) Update device drivers\n 2) Run hardware diagnostics to identify potentially failing components"],
+    "context_set": ""
+    },
+    {"tag": "software error",
+    "patterns": ["software not working", "application not working", "software error", "application error"],
+    "responses": ["To fix a software error, try the following:\n 1) Update software\n 2) Reinstall or repair (if applicable) software\n 3) Restart your computer"],
+    "context_set": ""
+    },
+    {"tag": "connection slow",
+    "patterns": ["wifi is slow", "slow connection", "pages not loading"],
+    "responses": ["To fix a slow connection, try the following:\n 1) Restart your modem/router\n 2) Connect an ethernet cable to your device"],
+    "context_set": ""
+    },
+    {"tag": "password reset",
+    "patterns": ["forgot my password", "can you reset my password", "I have forgotten my password"],
+    "responses": ["Here is the documentation for resetting your password: totallyreallink.com"],
+    "context_set": ""
+    },
+    {"tag": "",
+    "patterns": [],
+    "responses": [],
+    "context_set": ""
+    }
+]}
