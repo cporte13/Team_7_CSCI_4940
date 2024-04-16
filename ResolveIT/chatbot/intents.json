@@ -10,7 +10,7 @@
     "context_set": ""
     },
     {"tag": "computer bluescreen",
-    "patterns": ["my computer blue screens", "blue screen", "blue screen of death", "blue screen of death on computer"],
+    "patterns": ["my computer blue screens", "blue screen", "blue screen of death", "blue screen of death on computer", "keeps blue screening"],
     "responses": ["To potentially resolve a blue screen, try the following:\n 1) Update device drivers\n 2) Run hardware diagnostics to identify potentially failing components"],
     "context_set": ""
     },

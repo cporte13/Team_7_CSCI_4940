@@ -3,6 +3,10 @@ session_start();
 
 include 'functions.php';
 
+$currentID = $_GET['id'];
+$file = 'currentID.txt';
+file_put_contents($file, $currentID);
+
 
 //Checks for ID param in URL
 if (!isset($_GET['id'])) {
@@ -84,6 +88,12 @@ $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <form action="" method="post">
             <textarea name="msg" placeholder="Comment..."></textarea>
             <input type="submit" value="Comment">
+        </form>
+        <form action="">
+            <input id="chatty" onclick="myFunction()" type="button" value="Ask Chatty">
+            <script>
+                
+            </script>
         </form>
     </div>
 </div>

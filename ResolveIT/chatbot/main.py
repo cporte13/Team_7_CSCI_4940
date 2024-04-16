@@ -8,6 +8,7 @@ import tensorflow as tf
 import random
 import json
 import pickle
+import pymysql
 
 with open("intents.json") as file:
     data = json.load(file)
@@ -75,8 +76,7 @@ net = tflearn.regression(net)
 
 model = tflearn.DNN(net)
 
-
-model.fit(training, output, n_epoch=1000, batch_size=8, show_metric=True)
+model.fit(training, output, n_epoch=1500, batch_size=8, show_metric=True)
 model.save("model.tflearn")
 
 def bag_of_words(s, words):
@@ -91,13 +91,44 @@ def bag_of_words(s, words):
 
     return numpy.array(bag)
 
-def chat():
-    print("Start chatting with Chatty (quit to exit)!")
-    while True:
-        inp = input("You:")
-        if inp.lower() == "quit":
-            break
+def getAllTickets(conn):
+    try:
+        with conn.cursor() as cursor:
+            sql = "SELECT * FROM `tickets`"
+            cursor.execute(sql)
+            rows = cursor.fetchall()
 
+            for row in rows:
+                print(row)
+    finally:
+        conn.close()
+
+def getTicket(conn):
+    try:
+        with conn.cursor() as cursor:
+            with open("C:\\Users\\Kumi\\Documents\\School\\Spring2024\Capstone Project\\Team_7_CSCI_4940\\ResolveIT\\currentID.txt", "r") as f:
+                string = f.read()
+
+            ticketID = int(string)
+            sql = "SELECT * FROM `tickets` WHERE id = %s"
+            cursor.execute(sql, ticketID)
+            ticket = cursor.fetchone()
+            print(ticket['msg'])
+    finally:
+        conn.close()
+
+def chatTesting(conn):
+    with conn.cursor() as cursor:
+        with open("C:\\Users\\Kumi\\Documents\\School\\Spring2024\Capstone Project\\Team_7_CSCI_4940\\ResolveIT\\currentID.txt", "r") as f:
+            string = f.read()
+
+        ticketID = int(string)
+        sql = "SELECT * FROM `tickets` WHERE id = %s"
+        cursor.execute(sql, ticketID)
+        ticket = cursor.fetchone()
+        print(ticket['msg'])
+
+        inp = ticket["msg"]
         results = model.predict([bag_of_words(inp, words)])[0]
         results_index = numpy.argmax(results)
         tag = labels[results_index]
@@ -110,4 +141,42 @@ def chat():
         else:
             print("I don't quite understand. Please ask another question.")
 
-chat()
+def chat(conn):
+    with conn.cursor() as cursor:
+        with open("C:\\Users\\Kumi\\Documents\\School\\Spring2024\Capstone Project\\Team_7_CSCI_4940\\ResolveIT\\currentID.txt", "r") as f:
+            string = f.read()
+
+        ticketID = int(string)
+        sql = "SELECT * FROM `tickets` WHERE id = %s"
+        cursor.execute(sql, ticketID)
+        ticket = cursor.fetchone()
+        print(ticket['msg'])
+
+        inp = ticket["msg"]
+        results = model.predict([bag_of_words(inp, words)])[0]
+        results_index = numpy.argmax(results)
+        tag = labels[results_index]
+
+        if results[results_index] > 0.7:
+            for tg in data["intents"]:
+                if tg["tag"] == tag:
+                    responses = tg["responses"]
+            print(random.choice(responses))
+
+            sql = "INSERT INTO `tickets_comments` (ticket_id, msg) VALUES (%s, %s)"
+            cursor.execute(sql, (ticketID, random.choice(responses)))
+            conn.commit()
+            conn.close()
+        else:
+            print("I don't quite understand. Please ask another question.")
+
+conn = pymysql.connect(
+    host="localhost",
+    user="root",
+    password="admin",
+    database="phpticket",
+    cursorclass=pymysql.cursors.DictCursor
+    )
+
+#chatTesting(conn)
+chat(conn)
