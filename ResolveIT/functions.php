@@ -24,8 +24,10 @@ function template_header($title) {
         <head>
             <meta charset="utf-8">
             <title>$title</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" href="css/tickets.css">
             <script src="https://kit.fontawesome.com/fc02c2a45c.js" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.7.1.js" crossorigin="anonymous"></script>
         </head>
         <body>
             <nav class="navtop">

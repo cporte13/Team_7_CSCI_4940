@@ -1,6 +1,5 @@
 <?php
 session_start();
-echo session_id();
 
 include 'functions.php';
 
@@ -12,17 +11,17 @@ if (!isset ($_SESSION["loggedin"])) {
 
 <?=template_header('Tickets')?>
     <div class="content home">
-        <h2>Tickets</h2>
+        <h2>My Tickets</h2>
         <a href="createticket.php" class="create_btn">Create Ticket</a>
 
         <div class="tickets-list">
             <table class="tickets_table">
                 <tr>
-                    <th>ID</th>
                     <th>User</th>
                     <th>Title</th>
                     <th>Message</th>
                     <th>Date</th>
+                    <th>Assigned</th>
                     <th>Status</th>
                 </tr>
                 <?php
@@ -44,12 +43,22 @@ if (!isset ($_SESSION["loggedin"])) {
 
                 foreach ($tickets as $ticket) {
                     echo '<tr>';
-                    echo '<td>' . $ticket['id'] . '</td>';
                     echo '<td>' . $ticket['username'] . '</td>';
                     echo '<td>' . $ticket['title'] . '</td>';
                     echo '<td><a href="viewtickets.php?id='.$ticket['id'].'">' . $ticket['msg'] . '</a>' . '</td>';
                     echo '<td>' . $ticket['created'] . '</td>';
-                    echo '<td>' . $ticket['status'] . '</td>';
+                    echo '<td>' . $ticket['assigned'] . '</td>';
+
+                    if ($ticket['status'] == "open") {
+                        echo '<td class="status_btn_open">' . $ticket['status'] . '</td>';
+                    } else if ($ticket['status'] == "closed") {
+                        echo '<td class="status_btn_closed">' . $ticket['status'] . '</td>';
+                    } else if ($ticket['status'] == "on hold") {
+                        echo '<td class="status_btn_onhold">' . $ticket['status'] . '</td>';
+                    } else if ($ticket['status'] == "resolved") {
+                        echo '<td class="status_btn_resolved">' . $ticket['status'] . '</td>';
+                    }
+
                     echo '</tr>';
                 }
                 ?>

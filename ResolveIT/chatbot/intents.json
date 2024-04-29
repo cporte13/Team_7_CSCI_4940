@@ -1,0 +1,87 @@
+{"intents": [
+    {"tag": "computer slow",
+    "patterns": ["computer is slow", "my computer is slowing down", "slow to open computer"],
+    "responses": ["To fix a slow computer, try the following:\n 1) Try cleaning hard drive space with a disk cleanup tool\n + 2) Close background processes via task manager\n 3) Consider upgrading RAM"],
+    "context_set": ""
+    },
+    {"tag": "computer freeze",
+    "patterns": ["my computer is frozen", "computer freezing", "frozen computer", "screen freezes"],
+    "responses": ["To fix a computer that is freezing, try the following:\n 1) Update device drivers\n 2) Make sure the computer is not overheating\n 3) Run a malware scan on the device"],
+    "context_set": ""
+    },
+    {"tag": "computer bluescreen",
+    "patterns": ["my computer blue screens", "blue screen", "blue screen of death", "blue screen of death on computer", "keeps blue screening"],
+    "responses": ["To potentially resolve a blue screen, try the following:\n 1) Update device drivers\n 2) Run hardware diagnostics to identify potentially failing components"],
+    "context_set": ""
+    },
+    {"tag": "software error",
+    "patterns": ["software not working", "application not working", "software error", "application error"],
+    "responses": ["To fix a software error, try the following:\n 1) Update software\n 2) Reinstall or repair (if applicable) software\n 3) Restart your computer"],
+    "context_set": ""
+    },
+    {"tag": "connection slow",
+    "patterns": ["wifi is slow", "slow connection", "pages not loading"],
+    "responses": ["To fix a slow connection, try the following:\n 1) Restart your modem/router\n 2) Connect an ethernet cable to your device"],
+    "context_set": ""
+    },
+    {"tag": "password reset",
+    "patterns": ["forgot my password", "can you reset my password", "I have forgotten my password", "forgot password"],
+    "responses": ["Here is the documentation for resetting your password: totallyreallink.com"],
+    "context_set": ""
+    },
+    {"tag": "printer not printing",
+    "patterns": ["my printer is not printing", "printer not working", "printer is not printing"],
+    "responses": ["Firstly, make sure the printer is on and properly connected to your device. If it is connected via network, make sure that the network is active amd try connecting again. If neither solution works, reinstall the drivers from the manufacturer's website."],
+    "context_set": ""
+    },
+    {"tag": "printer jam",
+    "patterns": ["my printer is jammed", "printer jammed", "paper jam", "printer says it is jammed"],
+    "responses": ["Turn off your printer before opening the tray to ensure that no paper is jammed. You can also follow specific instructions for clearing jams from the manufacturer's site."],
+    "context_set": ""
+    },
+    {"tag": "computer overheating",
+    "patterns": ["computer fans are loud", "fans are loud", "my computer is overheating", "computer runs hot", "overheating"],
+    "responses": ["It looks like your computer is overheating. Make sure that your computer is in an area where it recieves cool air such as on top of a desk. Alternatively, try removing dust from the computer with canned air. If it is still overheating, consider reapplying thermal paste to the CPU."],
+    "context_set": ""
+    },
+    {"tag": "usb port issues",
+    "patterns": ["usb device is not working", "my usb is not working", "my usb is not being detected", "usb device not found"],
+    "responses": ["This could either be caused by a faulty port, faulty device, or a driver issue. Try using a different port and/or a similar device. If both the device and port work, look for drivers for the device from the manufacturer."],
+    "context_set": ""
+    },
+    {"tag": "admin rights",
+    "patterns": ["I need administrator privileges to install this software", "need admin rights to install", "asks for administrator password"],
+    "responses": ["Unfortunately I am just a bot and cannot help with this issue. You will need to ask your administrator(s) for permissions."],
+    "context_set": ""
+    },
+    {"tag": "device won't turn on",
+    "patterns": ["Device won't turn on", "device not powering on"],
+    "responses": ["After making sure the device is plugged in, try again. You can also perform a reset on most devices by unplugging them, holding the power button for 5 seconds, and plugging them back in. If the device does not turn on, it may be a hardware issue."],
+    "context_set": ""
+    },
+    {"tag": "monitor dying",
+    "patterns": ["My monitor is dying", "monitor cuts off", "monitor will not turn on", "monitor won't turn on", "monitor screen flashes"],
+    "responses": ["Make sure that the power cable is properly plugged into the monitor. If it is still having issues, the monitor may be dying. You would likely have to purchase a new monitor."],
+    "context_set": ""
+    },
+    {"tag": "outlook not working",
+    "patterns": ["My outlook is not working", "outlook not working"],
+    "responses": ["You can find some basic troubleshooting for outlook here: https://support.microsoft.com/en-us/office/troubleshoot-outlook-for-windows-issues-241bb0fc-b201-4bb2-98d3-74750a27029e"],
+    "context_set": ""
+    },
+    {"tag": "gmail not loading",
+    "patterns": ["My gmail won't load", "gmail not loading", "my gmail is not loading"],
+    "responses": ["You can find some troubleshooting tips for gmail issues here: https://support.google.com/mail/answer/7074871?hl=en"],
+    "context_set": ""
+    },
+    {"tag": "browser issues",
+    "patterns": ["My browser is having issues", "chrome is having issues", "firefox is having issues", "edge is having issues"],
+    "responses": ["Try clearing your browser's cache and cookies, then restarting the browser."],
+    "context_set": ""
+    },
+    {"tag": "",
+    "patterns": [],
+    "responses": [],
+    "context_set": ""
+    }
+]}

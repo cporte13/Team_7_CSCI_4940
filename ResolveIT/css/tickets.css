@@ -57,7 +57,7 @@ body {
     padding: 25px 0;
     font-size: 22px;
     border-bottom: 1px solid;
-    color: #666666;
+    font-weight: bold;
 }
 
 .buttons {
@@ -70,6 +70,49 @@ body {
     width: 200px;
     margin-top: 15px;
     border-radius: 5px;
+}
+
+#chatty {
+    display: inline-block;
+    text-decoration: none;
+    background-color: lightseagreen;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    padding: 10px 15px;
+    margin: 15px 10px 15px 0;
+}
+
+.comment:first-of-type {
+    margin-top: 25px;
+}
+
+.comment:nth-child(odd) {
+    margin-left: 10px;
+    margin-bottom: 20px;
+    padding: 14px;
+    border-radius: 10px;
+    background: lightblue;
+    max-width: 400px;
+}
+
+.comment:nth-child(even) {
+    margin-left: 10px;
+    margin-bottom: 20px;
+    padding: 14px;
+    border-radius: 10px;
+    background: lightgreen;
+    max-width: 400px;
+}
+
+.comment:after {
+    display: block;
+    width: 0;
+    content: "";
+    border: 15px solid transparent;
+    border-left-style: lightblue;
+    border-right: 0;
 }
 
 .buttons .btn-red {
@@ -100,6 +143,7 @@ body {
     display: inline-block;
     text-decoration: none;
     background-color: #38b673;
+    opacity: 0.85;
     font-weight: bold;
     font-size: 14px;
     border-radius: 5px;
@@ -107,6 +151,79 @@ body {
     padding: 10px 15px;
     margin: 15px 10px 15px 0;
 }
+
+.create_btn:hover {
+    opacity: 1;
+}
+
+.status_btn_open {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 5px;
+    color: black;
+    background-color: #0f5cd1;
+    opacity: 0.9;
+    padding: 10px 15px;
+    margin: 10px 10px 10px 10px;
+}
+
+.status_btn_open:hover {
+    opacity: 1;
+}
+
+.status_btn_closed {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 5px;
+    color: black;
+    background-color: red;
+    opacity: 0.9;
+    padding: 10px 15px;
+    margin: 10px 10px 10px 10px;
+}
+
+.status_btn_closed:hover {
+    opacity: 1;
+}
+
+.status_btn_onhold {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 5px;
+    color: black;
+    background-color: #f3f70c;
+    opacity: 0.9;
+    padding: 10px 15px;
+    margin: 10px 10px 10px 10px;
+}
+
+.status_btn_onhold:hover {
+    opacity: 1;
+}
+
+.status_btn_resolved {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 5px;
+    color: black;
+    background-color: #38b673;
+    opacity: 0.9;
+    padding: 10px 15px;
+    margin: 10px 10px 10px 10px;
+}
+
+.status_btn_resolved:hover {
+    opacity: 1;
+}
+
 .home .tickets-list {
     display: flex;
     flex-flow: column;
@@ -178,12 +295,20 @@ body {
     color: white;
 }
 
-.view h2 .open, .view h2.resolved {
+.view h2 .open {
     color: #30b673;
 }
 
-.view h2 .on hold {
+.view h2 .resolved {
+    color: #30b673;
+}
+
+.view h2 .onhold {
     color: grey;
+}
+
+.view h2 .closed {
+    color: red;
 }
 
 .view .ticket {
@@ -221,7 +346,7 @@ body {
     display: flex;
     font-size: 14px;
     padding-bottom: 5px;
-    color: grey;
+
 }
 
 .create form, .view form {
@@ -253,6 +378,7 @@ body {
 .create form input[type="submit"], .view form input[type="submit"] {
     display: block;
     background-color: #30b673;
+    opacity: 0.9;
     border: 0;
     font-weight: bold;
     font-size: 14px;
@@ -260,4 +386,61 @@ body {
     width: 200px;
     margin-top: 15px;
     border-radius: 5px;
+}
+
+.create form input[type="submit"], .view form input[type="submit"]:hover {
+    opacity: 1;
+}
+
+@media only screen and (max-width: 768px) {
+    html, body {
+        overflow-x: hidden;
+    }
+
+    .content {
+        margin-left: 8px;
+        margin-right: 8px;
+        width: fit-content;
+    }
+
+    table, tr, th, td {
+        display: block;
+        width: 99%;
+    }
+
+    .tickets_table tr {
+        margin: 0 0 1rem 0;
+    }
+
+    .tickets_table th {
+        position: abosulute;
+        display: none;
+    }
+
+    .tickets_table td {
+        border: none;
+        border-bottom: 1px solid white;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    .tickets_table td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    td:nth-of-type(1):before {content: "ID";}
+    td:nth-of-type(2):before {content: "User";}
+    td:nth-of-type(3):before {content: "Title";}
+    td:nth-of-type(4):before {content: "Message";}
+    td:nth-of-type(5):before {content: "Date";}
+    td:nth-of-type(6):before {content: "Status";}
+
+    .create form input[type="submit"], .view form input[type="submit"] {
+    margin-left: 25%;
+    }
 }
